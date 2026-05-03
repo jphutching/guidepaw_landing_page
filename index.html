@@ -106,6 +106,46 @@
       box-shadow: 0 12px 28px rgba(0, 76, 120, .22);
     }
 
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 22px;
+      margin-bottom: 26px;
+    }
+
+    .beta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 190px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 900;
+      letter-spacing: .03em;
+      text-decoration: none;
+      transition: transform .16s ease, box-shadow .16s ease, opacity .16s ease;
+    }
+
+    .beta-btn:hover {
+      transform: translateY(-1px);
+      opacity: .94;
+    }
+
+    .beta-btn.primary {
+      color: white;
+      background: var(--navy);
+      box-shadow: 0 12px 28px rgba(6, 56, 93, .22);
+    }
+
+    .beta-btn.secondary {
+      color: var(--navy);
+      background: white;
+      border: 2px solid rgba(6, 56, 93, .18);
+      box-shadow: 0 10px 24px rgba(0, 30, 77, .10);
+    }
+
     .dot {
       width: 10px;
       height: 10px;
@@ -135,12 +175,15 @@
       <p class="eyebrow">GuidePaw.app</p>
       <h1>GuidePaw</h1>
       <p class="tagline">Training Trust for the Journey</p>
+      <div class="actions" aria-label="GuidePaw beta access links">
+        <a class="beta-btn primary" href="https://beta.guidepaw.app/beta_request.php">Request Beta Access</a>
+        <a class="beta-btn secondary" href="https://beta.guidepaw.app/login.php">Beta Login</a>
+      </div>
       <p class="summary">
         GuidePaw is being built as a practical training and accountability platform for service-dog teams,
         handlers, trainers, and organizations. It will help document training logs, track progress,
         review feedback, and support trust-building work both at home and on the road.
       </p>
-      <div class="coming"><span class="dot" aria-hidden="true"></span> Coming Soon</div>
     </section>
     <footer>
       Questions? Contact the GuidePaw team soon at <a href="mailto:admin@guidepaw.app">admin@guidepaw.app</a>
