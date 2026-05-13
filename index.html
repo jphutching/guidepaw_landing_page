@@ -3,31 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GuidePaw</title>
-  <meta
-    name="description"
-    content="GuidePaw is a service-dog and handler training platform built to support training logs, trust, accountability, and progress on the road."
-  />
-  <link rel="icon" href="assets/guidepaw-logo.png" type="image/png" />
-  <link rel="apple-touch-icon" href="assets/guidepaw-logo.png" />
+  <title>GuidePaw | Coming Soon</title>
+  <meta name="description" content="GuidePaw is a service-dog and handler training platform built to support training logs, trust, accountability, and progress on the road." />
   <style>
     :root {
-      --bg: #f4f7fb;
-      --surface: #ffffff;
-      --navy: #083252;
-      --blue: #1165c4;
+      --blue: #0877f2;
+      --navy: #06385d;
+      --teal: #088f8f;
       --ink: #123047;
-      --muted: #5e7183;
-      --line: rgba(8, 50, 82, 0.12);
-      --shadow: 0 22px 60px rgba(7, 34, 58, 0.10);
-      --radius: 28px;
+      --muted: #5f7180;
+      --card: rgba(255, 255, 255, 0.94);
+      --line: rgba(255, 255, 255, 0.24);
     }
 
     * { box-sizing: border-box; }
-
-    html {
-      scroll-behavior: smooth;
-    }
 
     body {
       margin: 0;
@@ -35,231 +24,167 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--ink);
       background:
-        linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      width: min(980px, calc(100% - 28px));
-      margin: 0 auto;
-      padding: 20px 0 28px;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      padding: 6px 0 18px;
-    }
-
-    .topbar .email {
-      color: var(--muted);
-      font-size: 0.95rem;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .hero {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: clamp(26px, 5vw, 54px);
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,.24), transparent 28%),
+        linear-gradient(135deg, #0485ff 0%, #075fe3 55%, #064ccd 100%);
       display: grid;
-      grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
-      gap: clamp(24px, 5vw, 42px);
-      align-items: center;
+      place-items: center;
+      padding: 28px;
     }
 
-    .logo-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 14px;
+    .shell {
+      width: min(980px, 100%);
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: clamp(22px, 5vw, 56px);
+      background: linear-gradient(180deg, rgba(255,255,255,.20), rgba(255,255,255,.06));
+      box-shadow: 0 28px 80px rgba(0, 31, 92, .28);
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 30px;
+      padding: clamp(26px, 5vw, 58px);
+      text-align: center;
+      box-shadow: 0 18px 45px rgba(0, 30, 77, .18);
     }
 
     .logo {
-      width: min(100%, 260px);
+      width: min(360px, 86%);
       height: auto;
-      display: block;
-      border-radius: 26px;
-      box-shadow: 0 18px 36px rgba(7, 34, 58, 0.12);
-      background: #fff;
+      border-radius: 24px;
+      margin-bottom: 30px;
     }
 
-    .copy {
-      min-width: 0;
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--teal);
+      font-size: .86rem;
+      font-weight: 800;
+      letter-spacing: .22em;
+      text-transform: uppercase;
     }
 
     h1 {
       margin: 0;
       color: var(--navy);
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      line-height: 0.96;
+      font-size: clamp(2.25rem, 7vw, 5rem);
+      line-height: .95;
       letter-spacing: -0.06em;
-      max-width: 10ch;
+    }
+
+    .tagline {
+      margin: 22px auto 0;
+      max-width: 760px;
+      color: var(--navy);
+      font-size: clamp(1.35rem, 3.5vw, 2.55rem);
+      line-height: 1.15;
+      font-weight: 900;
+      letter-spacing: .07em;
+      text-transform: uppercase;
     }
 
     .summary {
-      margin: 18px 0 0;
-      max-width: 42rem;
+      margin: 26px auto 0;
+      max-width: 720px;
       color: var(--muted);
-      font-size: clamp(1.05rem, 2vw, 1.22rem);
-      line-height: 1.7;
+      font-size: clamp(1.02rem, 2.1vw, 1.22rem);
+      line-height: 1.65;
+    }
+
+    .coming {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 34px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      color: white;
+      background: linear-gradient(90deg, var(--navy), var(--teal));
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      box-shadow: 0 12px 28px rgba(0, 76, 120, .22);
     }
 
     .actions {
       display: flex;
+      justify-content: center;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
+      gap: 14px;
+      margin-top: 22px;
+      margin-bottom: 26px;
     }
 
-    .button {
+    .beta-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0 18px;
+      min-width: 190px;
+      padding: 14px 22px;
       border-radius: 999px;
-      border: 1px solid transparent;
-      font-size: 0.98rem;
-      font-weight: 800;
-      white-space: nowrap;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+      font-weight: 900;
+      letter-spacing: .03em;
+      text-decoration: none;
+      transition: transform .16s ease, box-shadow .16s ease, opacity .16s ease;
     }
 
-    .button:hover {
+    .beta-btn:hover {
       transform: translateY(-1px);
-      opacity: 0.96;
+      opacity: .94;
     }
 
-    .button.primary {
-      color: #fff;
-      background: linear-gradient(135deg, var(--navy), var(--blue));
-      box-shadow: 0 14px 28px rgba(8, 50, 82, 0.18);
+    .beta-btn.primary {
+      color: white;
+      background: var(--navy);
+      box-shadow: 0 12px 28px rgba(6, 56, 93, .22);
     }
 
-    .button.secondary {
+    .beta-btn.secondary {
       color: var(--navy);
-      background: #fff;
-      border-color: rgba(8, 50, 82, 0.16);
-      box-shadow: 0 10px 24px rgba(0, 30, 77, 0.08);
+      background: white;
+      border: 2px solid rgba(6, 56, 93, .18);
+      box-shadow: 0 10px 24px rgba(0, 30, 77, .10);
     }
 
-    .direction {
-      margin-top: 22px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(8, 50, 82, 0.10);
-      color: var(--muted);
-      line-height: 1.65;
-      max-width: 46rem;
-      font-size: 1rem;
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 0 6px rgba(255,255,255,.18);
     }
 
-    .direction strong {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--navy);
-      font-size: 1rem;
-      letter-spacing: 0.02em;
+    footer {
+      margin-top: 30px;
+      color: rgba(255,255,255,.88);
+      text-align: center;
+      font-size: .95rem;
     }
 
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      padding: 18px 2px 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .footer a {
-      color: var(--navy);
-      font-weight: 800;
-    }
-
-    @media (max-width: 760px) {
-      .page {
-        width: min(100% - 20px, 980px);
-      }
-
-      .topbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        gap: 18px;
-        padding: 24px 18px;
-      }
-
-      .logo-wrap {
-        padding: 0;
-      }
-
-      .logo {
-        width: min(100%, 220px);
-      }
-
-      h1 {
-        max-width: none;
-        font-size: clamp(2.2rem, 12vw, 3.6rem);
-      }
-
-      .actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .button {
-        width: 100%;
-      }
+    a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: 700;
     }
   </style>
 </head>
 <body>
-  <main class="page">
-    <header class="topbar">
-      <div></div>
-      <a class="email" href="mailto:admin@guidepaw.app">admin@guidepaw.app</a>
-    </header>
-
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="logo-wrap">
-        <img class="logo" src="assets/guidepaw-logo.png" alt="GuidePaw logo" />
+  <main class="shell">
+    <section class="card" aria-label="GuidePaw coming soon landing page">
+      <img class="logo" src="assets/guidepaw-logo.png" alt="GuidePaw logo" />
+      <p class="tagline">Training Trust for the Journey</p>
+      <div class="actions" aria-label="GuidePaw beta access links">
+        <a class="beta-btn primary" href="https://beta.guidepaw.app/beta_request.php">Request Beta Access</a>
+        <a class="beta-btn secondary" href="https://beta.guidepaw.app/login.php">Beta Login</a>
       </div>
-      <div class="copy">
-        <h1 id="hero-title">GuidePaw</h1>
-        <p class="summary">
-          GuidePaw is a service-dog and handler training platform built to support training logs,
-          trust, accountability, and progress on the road.
-        </p>
-
-        <div class="actions" aria-label="GuidePaw access links">
-          <a class="button primary" href="https://beta.guidepaw.app/beta_request.php">Request beta access</a>
-          <a class="button secondary" href="https://beta.guidepaw.app/login.php">Open beta login</a>
-        </div>
-
-        <div class="direction">
-          <strong>What we are building</strong>
-          A focused, easier-to-use home for service-dog work: training, care, access, and progress
-          without making handlers hunt through clutter.
-        </div>
-      </div>
+      <p class="summary">
+        GuidePaw is being built as a practical training and accountability platform for service-dog teams,
+        handlers, trainers, and organizations. It will help document training logs, track progress,
+        review feedback, and support trust-building work both at home and on the road.
+      </p>
     </section>
-
-    <footer class="footer">
-      <span>Current beta available through the links above.</span>
-      <a href="mailto:admin@guidepaw.app">Questions? Contact the team</a>
+    <footer>
+      Questions? Contact the GuidePaw team soon at <a href="mailto:admin@guidepaw.app">admin@guidepaw.app</a>
     </footer>
   </main>
 </body>
