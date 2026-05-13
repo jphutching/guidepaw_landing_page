@@ -3,20 +3,33 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GuidePaw | Coming Soon</title>
-  <meta name="description" content="GuidePaw is a service-dog and handler training platform built to support training logs, trust, accountability, and progress on the road." />
+  <title>GuidePaw</title>
+  <meta
+    name="description"
+    content="GuidePaw helps service-dog teams keep training, care, access, and progress in one clear place."
+  />
+  <link rel="icon" href="assets/guidepaw-logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/guidepaw-logo.png" />
   <style>
     :root {
-      --blue: #0877f2;
-      --navy: #06385d;
-      --teal: #088f8f;
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --surface-soft: #edf2f8;
+      --navy: #083252;
+      --blue: #1165c4;
+      --teal: #0a8a8a;
       --ink: #123047;
-      --muted: #5f7180;
-      --card: rgba(255, 255, 255, 0.94);
-      --line: rgba(255, 255, 255, 0.24);
+      --muted: #5e7183;
+      --line: rgba(8, 50, 82, 0.12);
+      --shadow: 0 22px 60px rgba(7, 34, 58, 0.10);
+      --radius: 24px;
     }
 
     * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -24,167 +37,563 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 18% 18%, rgba(255,255,255,.24), transparent 28%),
-        linear-gradient(135deg, #0485ff 0%, #075fe3 55%, #064ccd 100%);
-      display: grid;
-      place-items: center;
-      padding: 28px;
-    }
-
-    .shell {
-      width: min(980px, 100%);
-      border: 1px solid var(--line);
-      border-radius: 34px;
-      padding: clamp(22px, 5vw, 56px);
-      background: linear-gradient(180deg, rgba(255,255,255,.20), rgba(255,255,255,.06));
-      box-shadow: 0 28px 80px rgba(0, 31, 92, .28);
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: 30px;
-      padding: clamp(26px, 5vw, 58px);
-      text-align: center;
-      box-shadow: 0 18px 45px rgba(0, 30, 77, .18);
-    }
-
-    .logo {
-      width: min(360px, 86%);
-      height: auto;
-      border-radius: 24px;
-      margin-bottom: 30px;
-    }
-
-    .eyebrow {
-      margin: 0 0 14px;
-      color: var(--teal);
-      font-size: .86rem;
-      font-weight: 800;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      color: var(--navy);
-      font-size: clamp(2.25rem, 7vw, 5rem);
-      line-height: .95;
-      letter-spacing: -0.06em;
-    }
-
-    .tagline {
-      margin: 22px auto 0;
-      max-width: 760px;
-      color: var(--navy);
-      font-size: clamp(1.35rem, 3.5vw, 2.55rem);
-      line-height: 1.15;
-      font-weight: 900;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-    }
-
-    .summary {
-      margin: 26px auto 0;
-      max-width: 720px;
-      color: var(--muted);
-      font-size: clamp(1.02rem, 2.1vw, 1.22rem);
-      line-height: 1.65;
-    }
-
-    .coming {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 34px;
-      padding: 14px 22px;
-      border-radius: 999px;
-      color: white;
-      background: linear-gradient(90deg, var(--navy), var(--teal));
-      font-weight: 800;
-      letter-spacing: .09em;
-      text-transform: uppercase;
-      box-shadow: 0 12px 28px rgba(0, 76, 120, .22);
-    }
-
-    .actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 22px;
-      margin-bottom: 26px;
-    }
-
-    .beta-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 190px;
-      padding: 14px 22px;
-      border-radius: 999px;
-      font-weight: 900;
-      letter-spacing: .03em;
-      text-decoration: none;
-      transition: transform .16s ease, box-shadow .16s ease, opacity .16s ease;
-    }
-
-    .beta-btn:hover {
-      transform: translateY(-1px);
-      opacity: .94;
-    }
-
-    .beta-btn.primary {
-      color: white;
-      background: var(--navy);
-      box-shadow: 0 12px 28px rgba(6, 56, 93, .22);
-    }
-
-    .beta-btn.secondary {
-      color: var(--navy);
-      background: white;
-      border: 2px solid rgba(6, 56, 93, .18);
-      box-shadow: 0 10px 24px rgba(0, 30, 77, .10);
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: currentColor;
-      box-shadow: 0 0 0 6px rgba(255,255,255,.18);
-    }
-
-    footer {
-      margin-top: 30px;
-      color: rgba(255,255,255,.88);
-      text-align: center;
-      font-size: .95rem;
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
     }
 
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 20px 0 34px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 10px 0 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 56px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 12px 26px rgba(7, 34, 58, 0.12);
+      background: white;
+      flex: none;
+    }
+
+    .brand-text {
+      min-width: 0;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.08rem;
+      line-height: 1.2;
+      color: var(--navy);
+    }
+
+    .brand-text span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: flex-end;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 0.96rem;
       font-weight: 700;
+    }
+
+    .nav a {
+      padding: 6px 0;
+      border-bottom: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .nav a:hover {
+      color: var(--navy);
+      border-bottom-color: rgba(8, 50, 82, 0.22);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-panel,
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: clamp(28px, 4vw, 48px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 510px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(17, 101, 196, 0.10), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, #f9fbfe 100%);
+    }
+
+    .hero-copy::after {
+      content: "";
+      position: absolute;
+      inset: auto -8% -22% auto;
+      width: 340px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(10, 138, 138, 0.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 10ch;
+      color: var(--navy);
+      font-size: clamp(2.75rem, 6vw, 5.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+    }
+
+    .lede {
+      margin: 18px 0 0;
+      max-width: 42rem;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.55vw, 1.18rem);
+      line-height: 1.7;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.98rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button.primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      box-shadow: 0 14px 28px rgba(8, 50, 82, 0.18);
+    }
+
+    .button.secondary {
+      color: var(--navy);
+      background: #fff;
+      border-color: rgba(8, 50, 82, 0.16);
+    }
+
+    .button.ghost {
+      color: var(--navy);
+      background: var(--surface-soft);
+      border-color: transparent;
+    }
+
+    .hero-panel {
+      padding: 26px;
+      display: grid;
+      gap: 16px;
+      align-content: start;
+      background:
+        linear-gradient(180deg, rgba(8, 50, 82, 0.98), rgba(13, 68, 107, 0.96));
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: -20% -20% auto auto;
+      width: 260px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(17, 101, 196, 0.28), transparent 68%);
+      pointer-events: none;
+    }
+
+    .panel-title {
+      margin: 0;
+      font-size: 1.25rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .panel-text {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.82);
+      line-height: 1.65;
+      font-size: 0.98rem;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .stat {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.26rem;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      display: block;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .band {
+      margin-top: 24px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .section {
+      padding: clamp(22px, 3vw, 30px);
+    }
+
+    .section h2 {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-size: 1.45rem;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+
+    .section p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .feature {
+      padding: 18px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #fff 0%, #fafcff 100%);
+      border: 1px solid rgba(8, 50, 82, 0.10);
+    }
+
+    .feature h3 {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 1.05rem;
+      line-height: 1.25;
+    }
+
+    .feature p {
+      font-size: 0.97rem;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .step {
+      padding: 18px;
+      border-radius: 20px;
+      background: var(--surface-soft);
+      border: 1px solid rgba(8, 50, 82, 0.08);
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--blue);
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 1.05rem;
+    }
+
+    .step p {
+      font-size: 0.97rem;
+    }
+
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      padding: 18px 2px 6px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer a {
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    @media (max-width: 920px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        min-height: auto;
+      }
+
+      .feature-grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: min(100% - 20px, 1180px);
+        padding-top: 10px;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        justify-content: flex-start;
+        display: grid;
+        grid-template-columns: repeat(2, max-content);
+        gap: 10px 18px;
+      }
+
+      .hero-copy,
+      .hero-panel,
+      .section {
+        border-radius: 20px;
+      }
+
+      .hero-copy {
+        padding: 24px 20px;
+      }
+
+      .hero-panel {
+        padding: 22px 20px;
+      }
+
+      h1 {
+        max-width: none;
+        font-size: clamp(2.3rem, 14vw, 3.6rem);
+      }
+
+      .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .stat-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="shell">
-    <section class="card" aria-label="GuidePaw coming soon landing page">
-      <img class="logo" src="assets/guidepaw-logo.png" alt="GuidePaw logo" />
-      <p class="tagline">Training Trust for the Journey</p>
-      <div class="actions" aria-label="GuidePaw beta access links">
-        <a class="beta-btn primary" href="https://beta.guidepaw.app/beta_request.php">Request Beta Access</a>
-        <a class="beta-btn secondary" href="https://beta.guidepaw.app/login.php">Beta Login</a>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <img src="assets/guidepaw-logo.png" alt="GuidePaw logo" />
+        <div class="brand-text">
+          <strong>GuidePaw</strong>
+          <span>Service-dog training and handler tools</span>
+        </div>
       </div>
-      <p class="summary">
-        GuidePaw is being built as a practical training and accountability platform for service-dog teams,
-        handlers, trainers, and organizations. It will help document training logs, track progress,
-        review feedback, and support trust-building work both at home and on the road.
-      </p>
+      <nav class="nav" aria-label="Landing page sections">
+        <a href="#what-it-does">What it does</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#start-here">Start here</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">One place for service-dog work.</h1>
+        <p class="lede">
+          GuidePaw keeps training logs, dog access, care details, notifications, and progress
+          together so handlers do not have to hunt across scattered tools.
+        </p>
+        <div class="cta-row" aria-label="GuidePaw access links">
+          <a class="button primary" href="https://beta.guidepaw.app/beta_request.php">Request beta access</a>
+          <a class="button secondary" href="https://beta.guidepaw.app/login.php">Open beta login</a>
+          <a class="button ghost" href="#start-here">See how it starts</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel" aria-label="GuidePaw beta snapshot">
+        <h2 class="panel-title">What the beta already covers</h2>
+        <p class="panel-text">
+          The public site points straight to the beta experience. The app is focused on practical,
+          everyday work for handlers, trainers, and organizations.
+        </p>
+
+        <div class="stat-grid">
+          <div class="stat">
+            <strong>Logs</strong>
+            <span>Quick sessions, detailed entries, edits, and history.</span>
+          </div>
+          <div class="stat">
+            <strong>Care</strong>
+            <span>Appointments, medications, and wearable sync.</span>
+          </div>
+          <div class="stat">
+            <strong>Access</strong>
+            <span>Dog access, QR tracking, and public profile links.</span>
+          </div>
+          <div class="stat">
+            <strong>Training</strong>
+            <span>Plans, goals, challenges, and bundled programs.</span>
+          </div>
+        </div>
+
+        <div class="pill-row" aria-label="GuidePaw focus areas">
+          <span class="pill">Handler first</span>
+          <span class="pill">Clear records</span>
+          <span class="pill">Easy beta entry</span>
+        </div>
+      </aside>
     </section>
-    <footer>
-      Questions? Contact the GuidePaw team soon at <a href="mailto:admin@guidepaw.app">admin@guidepaw.app</a>
+
+    <div class="band">
+      <section class="section" id="what-it-does">
+        <h2>What it does</h2>
+        <p>
+          GuidePaw keeps the daily workflow organized without turning it into a hunt. The home
+          path stays short, and the deeper tools are still there when you need them.
+        </p>
+
+        <div class="feature-grid">
+          <article class="feature">
+            <h3>Training logs that stay readable</h3>
+            <p>Capture sessions, edit history, and media review in one place so progress is easy to follow.</p>
+          </article>
+          <article class="feature">
+            <h3>Access and identity under control</h3>
+            <p>Dog access, public QR pages, and contact fallback data stay tied to the right handler.</p>
+          </article>
+          <article class="feature">
+            <h3>Care and reminders without clutter</h3>
+            <p>Appointments, medications, wearable snapshots, and notifications stay visible but not noisy.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="how-it-works">
+        <h2>How it works</h2>
+        <p>
+          The public page is meant to be direct. Request access, sign in, and start using the beta
+          without chasing a maze of pages.
+        </p>
+
+        <div class="steps">
+          <article class="step">
+            <strong>Step 1</strong>
+            <h3>Request beta access</h3>
+            <p>Use the beta request form to get into the current build and start testing the app.</p>
+          </article>
+          <article class="step">
+            <strong>Step 2</strong>
+            <h3>Open the login</h3>
+            <p>Handlers and admins use the beta login page to reach the current working tools.</p>
+          </article>
+          <article class="step">
+            <strong>Step 3</strong>
+            <h3>Set up the work you need</h3>
+            <p>Add a dog, connect care tools, and keep the home page focused on the next action.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="start-here">
+        <h2>Start here</h2>
+        <p>
+          If you are ready to try the current build, the beta links are the shortest path in.
+        </p>
+        <div class="cta-row" style="margin-top: 18px;">
+          <a class="button primary" href="https://beta.guidepaw.app/beta_request.php">Request beta access</a>
+          <a class="button secondary" href="https://beta.guidepaw.app/login.php">Open beta login</a>
+          <a class="button ghost" href="mailto:admin@guidepaw.app">Contact the team</a>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer" id="contact">
+      <span>GuidePaw</span>
+      <span>Questions? <a href="mailto:admin@guidepaw.app">admin@guidepaw.app</a></span>
     </footer>
   </main>
 </body>
